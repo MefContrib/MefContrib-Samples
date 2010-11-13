@@ -1,0 +1,55 @@
+﻿<Window x:Class="MefContrib.Samples.ExtensibleDashboard.Views.Windows.ShellWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding DisplayName}" Height="600" Width="800">
+
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#232323" Offset="0" />
+            <GradientStop Color="#868686" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Window.Resources>
+
+        <SolidColorBrush Color="#9C9FA3" x:Key="Header1Foreground" />
+        <SolidColorBrush Color="#AAFFFFFF" x:Key="Header2Foreground" />
+        <SolidColorBrush Color="#55FFFFFF" x:Key="Header3Foreground" />
+
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe" FontSize="36" FontStretch="Normal" FontWeight="Light"
+                       TextWrapping="Wrap" Margin="10,5,0,0"
+                       Foreground="{DynamicResource Header1Foreground}"
+                       Text="Extensible" />
+                <TextBlock FontFamily="Segoe" FontSize="36" FontStretch="Normal" FontWeight="Light"
+                       TextWrapping="Wrap" Margin="10,5,0,0"
+                       Foreground="{DynamicResource Header2Foreground}"
+                       Text="Dashboard" />
+            </StackPanel>
+
+            <TextBlock FontFamily="Segoe" FontSize="14" FontStretch="Normal" FontWeight="Light"
+                       TextWrapping="Wrap" Margin="10,0,0,0"
+                       Foreground="{DynamicResource Header3Foreground}"
+                       Text="MefContrib Sample Application" />
+        </StackPanel>
+
+        <ItemsControl ItemsSource="{Binding Widgets}" Margin="10,75,10,10">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.Margin" Value="10" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
+    </Grid>
+
+</Window>

@@ -50,8 +50,8 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MefContrib.Hosting.Conventions">
-      <HintPath>..\..\..\dependencies\desktop\mefcontrib\MefContrib.Hosting.Conventions.dll</HintPath>
+    <Reference Include="MefContrib">
+      <HintPath>..\..\..\dependencies\desktop\MefContrib\MefContrib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />

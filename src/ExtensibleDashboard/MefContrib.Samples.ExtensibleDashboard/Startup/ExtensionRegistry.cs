@@ -19,7 +19,7 @@ namespace MefContrib.Samples.ExtensibleDashboard.Startup
                 .ForTypesWithName("Bootstrapper")
                 .MakeShared()
                 .ExportType()
-                .Imports(x => x.Import().Members(m => new[] {m.GetProperty("Main")}) );
+                .Imports(x => x.Import().Members(m => new[] { m.GetProperty("Main") }) );
 
             Part()
                 .ForTypesWithName("ShellPresentationModel")

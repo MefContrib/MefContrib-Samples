@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MefContrib.Samples.ExtensibleDashboard", "Extensible Dashboard\MefContrib.Samples.ExtensibleDashboard\MefContrib.Samples.ExtensibleDashboard.csproj", "{06099B86-1A35-4A0D-B59D-CC2FFE8BB0B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MefContrib.Samples.ExtensibleDashboard", "ExtensibleDashboard\MefContrib.Samples.ExtensibleDashboard\MefContrib.Samples.ExtensibleDashboard.csproj", "{06099B86-1A35-4A0D-B59D-CC2FFE8BB0B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MefContrib.Samples.ExtensibleDashboard.Contracts", "Extensible Dashboard\MefContrib.Samples.ExtensibleDashboard.Contracts\MefContrib.Samples.ExtensibleDashboard.Contracts.csproj", "{1F0C2D26-F60C-48E2-BB68-A626B4E3933A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MefContrib.Samples.ExtensibleDashboard.Contracts", "ExtensibleDashboard\MefContrib.Samples.ExtensibleDashboard.Contracts\MefContrib.Samples.ExtensibleDashboard.Contracts.csproj", "{1F0C2D26-F60C-48E2-BB68-A626B4E3933A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MefContrib.Samples.ExtensibleDashboard.Widgets.StockTicker", "Extensible Dashboard\MefContrib.Samples.ExtensibleDashboard.Widgets.StockTicker\MefContrib.Samples.ExtensibleDashboard.Widgets.StockTicker.csproj", "{44EAC904-F756-45C6-B23C-EB52DAA125CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MefContrib.Samples.ExtensibleDashboard.Widgets.StockTicker", "ExtensibleDashboard\MefContrib.Samples.ExtensibleDashboard.Widgets.StockTicker\MefContrib.Samples.ExtensibleDashboard.Widgets.StockTicker.csproj", "{44EAC904-F756-45C6-B23C-EB52DAA125CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MefContrib.Samples.ExtensibleDashboard.Widgets.Twitter", "Extensible Dashboard\MefContrib.Samples.ExtensibleDashboard.Widgets.Twitter\MefContrib.Samples.ExtensibleDashboard.Widgets.Twitter.csproj", "{159F5600-515E-4EBC-A917-8EC5CA9EB91C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MefContrib.Samples.ExtensibleDashboard.Widgets.Twitter", "ExtensibleDashboard\MefContrib.Samples.ExtensibleDashboard.Widgets.Twitter\MefContrib.Samples.ExtensibleDashboard.Widgets.Twitter.csproj", "{159F5600-515E-4EBC-A917-8EC5CA9EB91C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

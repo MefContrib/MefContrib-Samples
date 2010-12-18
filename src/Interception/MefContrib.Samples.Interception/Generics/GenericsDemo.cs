@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using MefContrib.Hosting.Generics;
 using MefContrib.Hosting.Interception;
@@ -18,7 +17,7 @@ namespace MefContrib.Samples.Generics
             // Create source catalog, note we are passing the registry part.
             // During the runtime, GenericExportHandler will query this catalog for
             // all types implementing IGenericContractRegistry
-            var typeCatalog = new TypeCatalog(typeof(Trampoline), typeof(MyGenericContractRegistry));
+            var typeCatalog = new TypeCatalog(typeof(CustomerViewModel), typeof(MyGenericContractRegistry));
 
             // Create the interception configuration and add support for open generics
             var cfg = new InterceptionConfiguration()
@@ -34,7 +33,7 @@ namespace MefContrib.Samples.Generics
         private static CompositionContainer CreateContainer2()
         {
             // Create source catalog
-            var typeCatalog = new TypeCatalog(typeof(Trampoline));
+            var typeCatalog = new TypeCatalog(typeof(CustomerViewModel));
 
             // Create catalog which supports open-generics, pass in the registry
             var genericCatalog = new GenericCatalog(new MyGenericContractRegistry());
@@ -53,30 +52,23 @@ namespace MefContrib.Samples.Generics
             // Create the container
             var container = CreateContainer2();
 
-            // Get the trampoline object
-            var trampoline = container.GetExportedValue<Trampoline>();
+            // Get the model object
+            var model = container.GetExportedValue<CustomerViewModel>();
 
             // Test the open generics support
-            trampoline.Repository.Save(new Customer());
+            model.Repository.Save(new Customer());
 
             try
             {
                 // This results in exception being thrown. The user cannot directly query for
                 // open-generics type because underneath MEF creates ContractBasedImportDefinition
-                // from which it is not possible to determin the open-generics type to for
-                // creating closed generic part. This is why Trampoline class is used.
+                // from which it is not possible to determin the open-generics type for
+                // creating closed generic part.
                 container.GetExportedValue<IRepository<Customer>>();
             }
             catch
             {
             }
-        }
-
-        [Export]
-        public class Trampoline
-        {
-            [Import]
-            public IRepository<Customer> Repository { get; set; }
         }
     }
 }

@@ -13,7 +13,6 @@ namespace MefContrib.Samples.Generics
         }
     }
 
-    [InheritedExport]
     public interface IRepository<T>
     {
         T Get(int id);
@@ -22,10 +21,9 @@ namespace MefContrib.Samples.Generics
     }
 
     /// <summary>
-    /// To make <see cref="Repository{T}"/> type MEF discoverable, it has to be exported
-    /// using the <see cref="InheritedExportAttribute"/> attribute!!!
+    /// Wow! I can export a class with an open generic contract type!
     /// </summary>
-    [InheritedExport]
+    [Export(typeof(IRepository<>))]
     public class Repository<T> : IRepository<T> where T : new()
     {
         public T Get(int id)
@@ -39,5 +37,19 @@ namespace MefContrib.Samples.Generics
         }
     }
 
+    /// <summary>
+    /// Fake customer.
+    /// </summary>
     public class Customer { }
+
+    /// <summary>
+    /// Consumer of the generic <see cref="IRepository{T}"/> interface.
+    /// Although it is imported as a closed generic, it is exported as open generic!
+    /// </summary>
+    [Export]
+    public class CustomerViewModel
+    {
+        [Import]
+        public IRepository<Customer> Repository { get; set; }
+    }
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MefContrib.Hosting.Interception.LinFu</name>
+    </assembly>
+    <members>
+        <member name="T:MefContrib.Hosting.Interception.LinFu.DynamicProxyInterceptor">
+            <summary>
+            Defines an interceptor which creates proxies using the LinFu.DynamicProxy library.
+            </summary>
+        </member>
+        <member name="M:MefContrib.Hosting.Interception.LinFu.DynamicProxyInterceptor.#ctor(LinFu.DynamicProxy.IInterceptor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MefContrib.Hosting.Interception.LinFu.DynamicProxyInterceptor"/> class.
+            </summary>
+            <param name="interceptor">An <see cref="T:LinFu.DynamicProxy.IInterceptor"/> instance.</param>
+        </member>
+        <member name="M:MefContrib.Hosting.Interception.LinFu.DynamicProxyInterceptor.Intercept(System.Object)">
+            <summary>
+            Intercepts an exported value.
+            </summary>
+            <param name="value">The value to be intercepted.</param>
+            <returns>Intercepted value.</returns>
+        </member>
+    </members>
+</doc>

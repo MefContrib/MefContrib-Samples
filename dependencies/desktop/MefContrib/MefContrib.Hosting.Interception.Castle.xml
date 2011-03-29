@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MefContrib.Hosting.Interception.Castle</name>
+    </assembly>
+    <members>
+        <member name="T:MefContrib.Hosting.Interception.Castle.DynamicProxyInterceptor">
+            <summary>
+            Defines an interceptor which creates proxies using the Castle.DynamicProxy library.
+            </summary>
+        </member>
+        <member name="M:MefContrib.Hosting.Interception.Castle.DynamicProxyInterceptor.#ctor(Castle.DynamicProxy.IInterceptor[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:MefContrib.Hosting.Interception.Castle.DynamicProxyInterceptor"/> class.
+            </summary>
+            <param name="interceptors">An array of <see cref="T:Castle.DynamicProxy.IInterceptor"/> instances.</param>
+        </member>
+        <member name="M:MefContrib.Hosting.Interception.Castle.DynamicProxyInterceptor.Intercept(System.Object)">
+            <summary>
+            Intercepts an exported value.
+            </summary>
+            <param name="value">The value to be intercepted.</param>
+            <returns>Intercepted value.</returns>
+        </member>
+    </members>
+</doc>

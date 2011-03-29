@@ -22,17 +22,7 @@ namespace MefContrib.Integration.Castle
 
         private void ComponentRegisteredHandler(string key, IHandler handler)
         {
-            var name = key;
-            var type = handler.Service;
-
-            // By default, Windsor assigns implementation's full name for the key,
-            // but for a default key we want to pass null instead
-            if (handler.ComponentModel.Implementation.FullName == name)
-            {
-                name = null;
-            }
-
-            OnRegisteringComponent(type, name);
+            RegisterCastleComponent(handler);
         }
 
         public override object Resolve(Type type, string name)
@@ -44,6 +34,26 @@ namespace MefContrib.Integration.Castle
 
         public override void Initialize()
         {
+            var handlers = _container.Kernel.GetAssignableHandlers(typeof (object));
+            foreach (var handler in handlers)
+            {
+                RegisterCastleComponent(handler);
+            }
+        }
+
+        private void RegisterCastleComponent(IHandler handler)
+        {
+            var name = handler.ComponentModel.Name;
+            var type = handler.Service;
+
+            // By default, Windsor assigns implementation's full name for the key,
+            // but for a default key we want to pass null instead
+            if (handler.ComponentModel.Implementation.FullName == name)
+            {
+                name = null;
+            }
+
+            OnRegisteringComponent(type, name);
         }
     }
 }

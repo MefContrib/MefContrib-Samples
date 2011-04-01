@@ -11,14 +11,14 @@ namespace MefContrib.Samples.ExtensibleDashboard.Widgets.Twitter
             Scan(x => x.Assembly(typeof(TwitterRegistry).Assembly));
 
             Part()
-                .ForTypesAssignableFrom<TwitterWidgetPresentationModel>()
-                .ExportTypeAs<TwitterWidgetPresentationModel>()
+                .ForType<TwitterWidgetPresentationModel>()
+                .Export()
                 .ImportConstructor()
                 .MakeShared();
 
             Part()
                 .ForTypesAssignableFrom<ITweetsController>()
-                .ExportTypeAs<ITweetsController>()
+                .ExportAs<ITweetsController>()
                 .MakeShared();
         }
     }

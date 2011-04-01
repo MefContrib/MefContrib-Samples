@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows;
-
-namespace MefContrib.Samples.ExtensibleDashboard.Startup
+﻿namespace MefContrib.Samples.ExtensibleDashboard.Startup
 {
+    using System;
+    using System.Windows;
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

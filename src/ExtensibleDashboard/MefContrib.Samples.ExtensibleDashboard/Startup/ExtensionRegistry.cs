@@ -2,47 +2,45 @@ namespace MefContrib.Samples.ExtensibleDashboard.Startup
 {
     using System;
     using System.Reflection;
+    using MefContrib.Hosting.Conventions.Configuration;
     using MefContrib.Samples.ExtensibleDashboard.Contracts;
     using MefContrib.Samples.ExtensibleDashboard.Views;
-    using MefContrib.Hosting.Conventions.Configuration;
+    using MefContrib.Samples.ExtensibleDashboard.Views.Presenters;
+    using MefContrib.Samples.ExtensibleDashboard.Views.Windows;
 
     public class ExtensionRegistry : PartRegistry
     {
         public ExtensionRegistry()
         {
-            Scan(x => {
+            Scan(x =>
+            {
                 x.Assembly(Assembly.GetExecutingAssembly());
                 x.Directory(Environment.CurrentDirectory);
             });
 
-            Part()
-                .ForTypesWithName("Bootstrapper")
-                .MakeShared()
-                .ExportType()
-                .Imports(x => x.Import().Members(m => new[] { m.GetProperty("Main") }) );
+            // Bootstrapper part is defined in the App.config file
 
-            Part()
-                .ForTypesWithName("ShellPresentationModel")
+            Part<ShellPresentationModel>()
+                .ImportMember(t => t.View)
                 .MakeShared()
-                .ExportType()
-                .Imports(x => {
-                    x.Import().Members(m => new[] { m.GetProperty("View") });
-                    x.Import().Members(m => new[] { m.GetProperty("Widgets") }).ContractType<IWidget>();
+                .Export()
+                .Imports(x =>
+                {
+                    x.Import<ShellPresentationModel>().Member(m => m.Widgets).ContractType<IWidget>();
                 });
 
-            Part()
-                .ForTypesWithName("ShellWindow")
-                .ExportTypeAs<IShellView>()
+            Part<ShellWindow>()
+                .ExportAs<IShellView>()
                 .MakeShared();
 
             Part()
                 .ForTypesAssignableFrom<IWidget>()
-                .ExportTypeAs<IWidget>()
-                .Imports(x => x.Import().Members(m => new[] { m.GetProperty("PresentationModel") } ));
+                .ExportAs<IWidget>()
+                .ImportProperty("PresentationModel");
 
             Part()
                 .ForTypesWhereNamespaceContains("StockTicker")
-                .ExportType();
+                .Export();
         }
     }
 }

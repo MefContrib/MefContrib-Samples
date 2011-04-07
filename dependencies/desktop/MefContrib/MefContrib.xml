@@ -4,6 +4,148 @@
         <name>MefContrib</name>
     </assembly>
     <members>
+        <member name="T:MefContrib.Containers.ContainerExportProvider">
+            <summary>
+            Represents an <see cref="T:System.ComponentModel.Composition.Hosting.ExportProvider"/> which can provide
+            MEF with parts registered in any container.
+            </summary>
+        </member>
+        <member name="M:MefContrib.Containers.ContainerExportProvider.#ctor(MefContrib.Containers.IContainerAdapter)">
+            <summary>
+            Initializes a new instance of <see cref="T:MefContrib.Containers.ContainerExportProvider"/> class.
+            </summary>
+            <param name="containerAdapter">An instance of the <see cref="T:MefContrib.Containers.IContainerAdapter"/> interface.</param>
+        </member>
+        <member name="P:MefContrib.Containers.ContainerExportProvider.FactoryExportProvider">
+            <summary>
+            Gets the underlying <see cref="P:MefContrib.Containers.ContainerExportProvider.FactoryExportProvider"/> instance.
+            </summary>
+        </member>
+        <member name="T:MefContrib.Hosting.FactoryExportProvider">
+            <summary>
+            Represents a factory export provider.
+            </summary>
+            <remarks>
+            This class can be used to build custom <see cref="T:System.ComponentModel.Composition.Hosting.ExportProvider"/> which
+            provides exports from various data sources.
+            </remarks>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:MefContrib.Hosting.FactoryExportProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.#ctor(System.Type,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MefContrib.Hosting.FactoryExportProvider"/> class.
+            </summary>
+            <param name="type"><see cref="T:System.Type"/> to be registered.</param>
+            <param name="factory">Factory method.</param>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.#ctor(System.Type,System.String,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
+            <summary>
+            Initializes a new instance of <see cref="T:MefContrib.Hosting.FactoryExportProvider"/> class.
+            </summary>
+            <param name="type"><see cref="T:System.Type"/> to be registered.</param>
+            <param name="registrationName">Registration name.</param>
+            <param name="factory">Factory method.</param>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.#ctor(System.Func{System.Type,System.String,System.Object})">
+            <summary>
+            Initializes a new instance of <see cref="T:MefContrib.Hosting.FactoryExportProvider"/> class.
+            </summary>
+            <param name="factoryMethod">Method that is called when an instance of specific type
+            is requested, optionally with given registration name.</param>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.Register(System.Type,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
+            <summary>
+            Registers a new type.
+            </summary>
+            <param name="type">Type that is being exported.</param>
+            <param name="factory">Optional factory method. If not supplied, the general
+            factory method will be used.</param>
+            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.Register``1(System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,``0})">
+            <summary>
+            Registers a new type.
+            </summary>
+            <typeparam name="T">Type that is being exported.</typeparam>
+            <param name="factory">Optional factory method. If not supplied, the general
+            factory method will be used.</param>
+            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.RegisterInstance(System.Type,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
+            <summary>
+            Registers a new type as a singleton.
+            </summary>
+            <param name="type">Type that is being exported.</param>
+            <param name="factory">Factory method.</param>
+            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.RegisterInstance``1(System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,``0})">
+            <summary>
+            Registers a new type as a singleton.
+            </summary>
+            <typeparam name="T">Type that is being exported.</typeparam>
+            <param name="factory">Optional factory method. If not supplied, the general
+            factory method will be used.</param>
+            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.RegisterInstance(System.Type,System.String,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
+            <summary>
+            Registers a new type as a singleton.
+            </summary>
+            <param name="type">Type that is being registered.</param>
+            <param name="registrationName">Registration name under which <paramref name="type"/>
+            is being registered.</param>
+            <param name="factory">Optional factory method. If not supplied, the general
+            factory method will be used.</param>
+            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.RegisterInstance``1(System.String,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,``0})">
+            <summary>
+            Registers a new type as a singleton.
+            </summary>
+            <typeparam name="T">Type that is being exported.</typeparam>
+            <param name="registrationName">Registration name under which <typeparamref name="T"/>
+            is being registered.</param>
+            <param name="factory">Optional factory method. If not supplied, the general
+            factory method will be used.</param>
+            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.Register``1(System.String,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,``0})">
+            <summary>
+            Registers a new type.
+            </summary>
+            <typeparam name="T">Type that is being exported.</typeparam>
+            <param name="registrationName">Registration name under which <typeparamref name="T"/>
+            is being registered.</param>
+            <param name="factory">Optional factory method. If not supplied, the general
+            factory method will be used.</param>
+            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.FactoryExportProvider.Register(System.Type,System.String,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
+            <summary>
+            Registers a new type.
+            </summary>
+            <param name="type">Type that is being registered.</param>
+            <param name="registrationName">Registration name under which <paramref name="type"/>
+            is being registered.</param>
+            <param name="factory">Optional factory method. If not supplied, the general
+            factory method will be used.</param>
+            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
+        </member>
+        <member name="P:MefContrib.Hosting.FactoryExportProvider.ReadOnlyDefinitions">
+            <summary>
+            Gets a read only list of definitions known to the export provider.
+            </summary>
+        </member>
+        <member name="P:MefContrib.Hosting.FactoryExportProvider.SourceProvider">
+            <summary>
+            Gets or sets the <see cref="T:System.ComponentModel.Composition.Hosting.ExportProvider"/> which is used to satisfy additional exports.
+            </summary>
+        </member>
         <member name="T:MefContrib.Hosting.Interception.Configuration.IPartInterceptionCriteria">
             <summary>
             Defines the <see cref="T:System.ComponentModel.Composition.Primitives.ComposablePartDefinition"/> interception criteria.
@@ -145,10 +287,40 @@
             </summary>
             <typeparam name="TImportConvention">The type of the import convention that will be built by the expression builder.</typeparam>
         </member>
+        <member name="T:MefContrib.Hosting.Conventions.Configuration.ExpressionBuilder`1">
+            <summary>
+            Abstract expression builder.
+            </summary>
+            <typeparam name="T">Type of the object to be built.</typeparam>
+        </member>
+        <member name="T:MefContrib.Hosting.Conventions.Configuration.IExpressionBuilder">
+            <summary>
+            Represents the expression builder.
+            </summary>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.IExpressionBuilder.Build">
+            <summary>
+            Builds the specific instance and assigns values using expressions.
+            </summary>
+            <returns>Initialized instance of an object.</returns>
+        </member>
         <member name="M:MefContrib.Hosting.Conventions.Configuration.ExpressionBuilder`1.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExpressionBuilder`1"/> class.
             </summary>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExpressionBuilder`1.Build">
+            <summary>
+            Builds the specific instance and assigns values using expressions.
+            </summary>
+            <returns>Initialized instance of an object.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExpressionBuilder`1.ProvideValueFor(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object)">
+            <summary>
+            Assigns given value to a property given by the expression.
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="value">Value to be assigned to a property represented by the <paramref name="expression"/>.</param>
         </member>
         <member name="T:MefContrib.Hosting.Conventions.Configuration.IConventionBuilder`1">
             <summary>
@@ -261,7 +433,7 @@
             <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`1"/> instance as the method was called on.</returns>
             <exception cref="T:System.ArgumentNullException">The value of the <paramref name="expression"/> parameter was null.</exception>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`1.Members``1(System.Linq.Expressions.Expression{System.Action{``0}})">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`1.Member``1(System.Linq.Expressions.Expression{System.Action{``0}})">
             <summary>
             Defines the members which sould be used as imports by extracting them from a lambda expression with no return value.
             </summary>
@@ -270,7 +442,7 @@
             <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`1"/> instance as the method was called on.</returns>
             <exception cref="T:System.ArgumentNullException">The value of the <paramref name="expression"/> parameter was null.</exception>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`1.Members``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`1.Member``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
             <summary>
             Defines the members which sould be used as imports by extracting them from a lambda expression with a return value.
             </summary>
@@ -301,6 +473,11 @@
             </summary>
             <typeparam name="TMetadataView">The <see cref="T:System.Type"/> that the property names and values should be extracted from.</typeparam>
             <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`1"/> instance as the method was called on.</returns>
+        </member>
+        <member name="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilderExtensions">
+            <summary>
+            Defines a set of useful <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> extensions.
+            </summary>
         </member>
         <member name="T:MefContrib.Hosting.Conventions.Configuration.Section.PartElementCollection">
             <summary>
@@ -538,6 +715,12 @@
         </member>
         <member name="M:MefContrib.Hosting.Conventions.Configuration.IImportRegistry.Import``1">
             <summary>
+            Creates a convention builde for <see cref="T:MefContrib.Hosting.Conventions.ImportConvention"/> conventions.
+            </summary>
+            <returns>A <see cref="T:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`2"/> instance for the <see cref="T:MefContrib.Hosting.Conventions.ImportConvention"/> type.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.IImportRegistry.ImportWithConvention``1">
+            <summary>
             Create a convention builder for the <typeparamref name="TConvention"/> convention type.
             </summary>
             <typeparam name="TConvention">The type of a class which implements the <see cref="T:MefContrib.Hosting.Conventions.IImportConvention"/> interface.</typeparam>
@@ -562,10 +745,74 @@
         </member>
         <member name="M:MefContrib.Hosting.Conventions.Configuration.ImportRegistry.Import``1">
             <summary>
+            Creates a convention builde for <see cref="T:MefContrib.Hosting.Conventions.ImportConvention"/> conventions.
+            </summary>
+            <returns>A <see cref="T:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`2"/> instance for the <see cref="T:MefContrib.Hosting.Conventions.ImportConvention"/> type.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ImportRegistry.ImportWithConvention``1">
+            <summary>
             Create a convention builder for the <typeparamref name="TConvention"/> convention type.
             </summary>
             <typeparam name="TConvention">The type of a class which implements the <see cref="T:MefContrib.Hosting.Conventions.IImportConvention"/> interface.</typeparam>
             <returns>A <see cref="T:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`1"/> instance for the import convention type specified by the <typeparamref name="TConvention"/> type parameter.</returns>
+        </member>
+        <member name="T:MefContrib.Containers.IContainerAdapter">
+            <summary>
+            Represents an abstraction over a dependency injection container.
+            </summary>
+        </member>
+        <member name="M:MefContrib.Containers.IContainerAdapter.Resolve(System.Type,System.String)">
+            <summary>
+            Method called by <see cref="T:MefContrib.Containers.ContainerExportProvider"/> to retrieve
+            an instance of a given type.
+            </summary>
+            <param name="type">Type of the instance to retrieve.</param>
+            <param name="name">Optional name.</param>
+            <returns>An instance of a given type.</returns>
+        </member>
+        <member name="M:MefContrib.Containers.IContainerAdapter.Initialize">
+            <summary>
+            Method called by <see cref="T:MefContrib.Containers.ContainerExportProvider"/> in order
+            to initialize the adapter.
+            </summary>
+        </member>
+        <member name="E:MefContrib.Containers.IContainerAdapter.RegisteringComponent">
+            <summary>
+            Event raised whenever a component gets registered in
+            the underlying container.
+            </summary>
+        </member>
+        <member name="T:MefContrib.Containers.ContainerServices">
+            <summary>
+            Provides common services.
+            </summary>
+        </member>
+        <member name="M:MefContrib.Containers.ContainerServices.Resolve(System.ComponentModel.Composition.Hosting.ExportProvider,System.Type,System.String)">
+            <summary>
+            Resolves an object wrapped inside <see cref="T:System.Lazy`1"/> from an <see cref="T:System.ComponentModel.Composition.Hosting.ExportProvider"/>.
+            </summary>
+            <param name="exportProvider">Export provider.</param>
+            <param name="type">Type to be resolved.</param>
+            <param name="name">Optional name.</param>
+            <returns>Resolved instance or null, if no instance has been found.</returns>
+            <remarks>
+            Does not resolve instances which are provided by means of
+            <see cref="T:MefContrib.Hosting.FactoryExportProvider"/>.
+            </remarks>
+        </member>
+        <member name="M:MefContrib.Containers.ContainerServices.ResolveAll(System.ComponentModel.Composition.Hosting.ExportProvider,System.Type,System.String)">
+            <summary>
+            Resolves an collection of objects wrapped inside <see cref="T:System.Lazy`1"/>
+            from an <see cref="T:System.ComponentModel.Composition.Hosting.ExportProvider"/>.
+            </summary>
+            <param name="exportProvider">Export provider.</param>
+            <param name="type">Type to be resolved.</param>
+            <param name="name">Optional name.</param>
+            <returns>Resolved collection of lazy instances or null, if no instance has been found.</returns>
+            <remarks>
+            Does not resolve instances which are provided by means of
+            <see cref="T:MefContrib.Hosting.FactoryExportProvider"/>.
+            </remarks>
         </member>
         <member name="T:MefContrib.Hosting.Conventions.MetadataItem">
             <summary>
@@ -794,6 +1041,28 @@
             <typeparam name="TContractType">A <see cref="T:System.Type"/> that should be used as the contract type of the created imports.</typeparam>
             <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`1"/> instance as the method was called on.</returns>
         </member>
+        <member name="T:MefContrib.Containers.RegisterComponentEventArgs">
+            <summary>
+            Represents arguments for <see cref="E:MefContrib.Containers.IContainerAdapter.RegisteringComponent"/> event.
+            </summary>
+        </member>
+        <member name="M:MefContrib.Containers.RegisterComponentEventArgs.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MefContrib.Containers.RegisterComponentEventArgs"/> class.
+            </summary>
+            <param name="type"><see cref="P:MefContrib.Containers.RegisterComponentEventArgs.Type"/> being registered.</param>
+            <param name="name">Optional name.</param>
+        </member>
+        <member name="P:MefContrib.Containers.RegisterComponentEventArgs.Type">
+            <summary>
+            Gets the <see cref="P:MefContrib.Containers.RegisterComponentEventArgs.Type"/> being registered.
+            </summary>
+        </member>
+        <member name="P:MefContrib.Containers.RegisterComponentEventArgs.Name">
+            <summary>
+            Gets the optional name used during component registration.
+            </summary>
+        </member>
         <member name="T:MefContrib.Hosting.Interception.Configuration.PredicateInterceptionCriteria">
             <summary>
             Defines predicate-based interception criteria.
@@ -855,6 +1124,11 @@
             Gets or sets a value indicating whether this instance has been satisfied.
             </summary>
             <value><see langword="true"/> if this instance has been satisfied; otherwise, <see langword="false"/>.</value>
+        </member>
+        <member name="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilderExtensions">
+            <summary>
+            Defines a set of useful <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> extensions.
+            </summary>
         </member>
         <member name="T:MefContrib.Hosting.Conventions.Configuration.ITypeDefaultConventionConfigurator">
             <summary>
@@ -1100,6 +1374,16 @@
             Gets a collection of all the metadata defined for the <see cref="T:MefContrib.Hosting.Conventions.Configuration.Section.PartElement"/>.
             </summary>
             <value>A <see cref="T:MefContrib.Hosting.Conventions.Configuration.Section.MetadataElementCollection"/> object.</value>
+        </member>
+        <member name="T:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilderExtensions">
+            <summary>
+            Defines a set of useful <see cref="T:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`1"/> extensions.
+            </summary>
+        </member>
+        <member name="T:MefContrib.Containers.PartNotComposableAttribute">
+            <summary>
+            Suppresses MEF composition for a class created by the IoC container.
+            </summary>
         </member>
         <member name="T:MefContrib.Hosting.Conventions.IPartRegistryLocator">
             <summary>
@@ -1543,6 +1827,13 @@
         </member>
         <member name="M:MefContrib.Hosting.Conventions.Configuration.PartRegistry.Part``1">
             <summary>
+            Creates a convention builder for <see cref="T:MefContrib.Hosting.Conventions.PartConvention"/> conventions.
+            </summary>
+            <typeparam name="TPart">The type of the part this conventions is used for.</typeparam>
+            <returns>A <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance for the <see cref="T:MefContrib.Hosting.Conventions.PartConvention"/> type.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartRegistry.PartWithConvention``1">
+            <summary>
             Create a convention builder for the <typeparamref name="TConvention"/> convention type.
             </summary>
             <typeparam name="TConvention">The type of a class which implements the <see cref="T:MefContrib.Hosting.Conventions.IPartConvention"/> interface.</typeparam>
@@ -1577,6 +1868,111 @@
             Gets or sets the <see cref="T:System.Type"/> that the convention applies to.
             </summary>
             <value>The <see cref="T:System.Type"/> that the convention applies to.</value>
+        </member>
+        <member name="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`2">
+            <summary>
+            A convention builder for <see cref="T:MefContrib.Hosting.Conventions.IExportConvention"/> instances.
+            </summary>
+            <typeparam name="TExportConvention">The type of the export convention that will be built by the expression builder.</typeparam>
+            <typeparam name="TPart">The type of the part this export is applied to.</typeparam>
+        </member>
+        <member name="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1">
+            <summary>
+            A convention builder for <see cref="T:MefContrib.Hosting.Conventions.IExportConvention"/> instances.
+            </summary>
+            <typeparam name="TExportConvention">The type of the export convention that will be built by the expression builder.</typeparam>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> class.
+            </summary>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.AddMetadata(System.Object)">
+            <summary>
+            Defines metadata, using property name and values extracted from an anonymous type, that will be added to the exports created by the convention.
+            </summary>
+            <param name="anonymousType">The anonymous type that the names and values will be extracted from.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <exception cref="T:System.ArgumentNullException">The method was called with a null value.</exception>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.AddMetadata(System.String,System.Object)">
+            <summary>
+            Defines metadata, using a name and value pair, that will be added to the exports created by the convention.
+            </summary>
+            <param name="name">The name of the metadata.</param>
+            <param name="value">The value of the metadata.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <exception cref="T:System.ArgumentNullException">The value of the <paramref name="name"/> or <paramref name="value"/> parameters were null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">The lenght of the <paramref name="name"/> was zero.</exception>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.AddMetadata(System.Func{System.Collections.Generic.KeyValuePair{System.String,System.Object}[]})">
+            <summary>
+            Defines metadata, using <see cref="T:System.Collections.Generic.KeyValuePair`2"/> instances retrieved from a function, that will be added to the exports created by the convention.
+            </summary>
+            <param name="metadataFunction">The function that the metadata can be retrieved from.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="metadataFunction"/>, or the value returned by it, was null.</exception>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.ContractName(System.String)">
+            <summary>
+            Defines the contract name that will be added to the exports created by the convention.
+            </summary>
+            <param name="contractName">A <see cref="T:System.String"/> containing the name of the contract which should be used by the created exports.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.ContractName``1">
+            <summary>
+            Defines the contract name that will be added to the exports created by the convention, by deriving it from the provided type.
+            </summary>
+            <typeparam name="TContractType">A <see cref="T:System.Type"/> that should be used as the contract name of the created exports.</typeparam>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.ContractName(System.Func{System.Reflection.MemberInfo,System.String})">
+            <summary>
+            Defined the contract name that will be added to the exports created by the convention, by invoking the function.
+            </summary>
+            <param name="contractNameFunction">A function that accepts a <see cref="T:System.Reflection.MemberInfo"/> instance for the member that is being exported and returns the contract name.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.ContractType``1">
+            <summary>
+            Defines the contract type that will be added to the exports created by the convention.
+            </summary>
+            <typeparam name="TContractType">A <see cref="T:System.Type"/> that should be used as the contract type of the created exports.</typeparam>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.ContractType(System.Func{System.Reflection.MemberInfo,System.Type})">
+            <summary>
+            Defined the contract type that will be added to the exports created by the convention, by invoking the function.
+            </summary>
+            <param name="contractTypeFunction">A function that accepts a <see cref="T:System.Reflection.MemberInfo"/> instance for the member that is being exported and returns the contract type.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.Members(System.Func{System.Type,System.Reflection.MemberInfo[]})">
+            <summary>
+            Defines the members which should be used as exports by retreiving them from a function.
+            </summary>
+            <param name="expression">A <see cref="T:System.Func`2"/> function that returns a collection of <see cref="T:System.Reflection.MemberInfo"/> instances based on the provided <see cref="T:System.Type"/>.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <exception cref="T:System.ArgumentNullException">The value of the <paramref name="expression"/> parameter was null.</exception>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.Member``1(System.Linq.Expressions.Expression{System.Action{``0}})">
+            <summary>
+            Defines the members which sould be used as exports by extracting them from a lambda expression with no return value.
+            </summary>
+            <typeparam name="TPart">The <see cref="T:System.Type"/> that the members should be extracted from.</typeparam>
+            <param name="expression">An expression that idenfies the members which should be used as exports.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <exception cref="T:System.ArgumentNullException">The value of the <paramref name="expression"/> parameter was null.</exception>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.Member``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Defines the members which sould be used as exports by extracting them from a lambda expression with a return value.
+            </summary>
+            <typeparam name="TPart">The <see cref="T:System.Type"/> that the members should be extracted from.</typeparam>
+            <param name="expression">An expression that idenfies the members which should be used as exports.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <exception cref="T:System.ArgumentNullException">The value of the <paramref name="expression"/> parameter was null.</exception>
         </member>
         <member name="T:MefContrib.Hosting.Conventions.AggregatedTypeScanner">
             <summary>
@@ -2062,135 +2458,16 @@
         </member>
         <member name="M:MefContrib.Hosting.Conventions.Configuration.IExportRegistry.Export``1">
             <summary>
+            Creates a convention builde for <see cref="T:MefContrib.Hosting.Conventions.ExportConvention"/> conventions.
+            </summary>
+            <returns>A <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`2"/> instance for the <see cref="T:MefContrib.Hosting.Conventions.ExportConvention"/> type.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.IExportRegistry.ExportWithConvention``1">
+            <summary>
             Create a convention builder for the <typeparamref name="TConvention"/> convention type.
             </summary>
             <typeparam name="TConvention">The type of a class which implements the <see cref="T:MefContrib.Hosting.Conventions.IExportConvention"/> interface.</typeparam>
             <returns>A <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance for the export convention type specified by the <typeparamref name="TConvention"/> type parameter.</returns>
-        </member>
-        <member name="T:MefContrib.Hosting.FactoryExportProvider">
-            <summary>
-            Represents a factory export provider.
-            </summary>
-            <remarks>
-            This class can be used to build custom <see cref="T:System.ComponentModel.Composition.Hosting.ExportProvider"/> which
-            provides exports from various data sources.
-            </remarks>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.#ctor">
-            <summary>
-            Initializes a new instance of <see cref="T:MefContrib.Hosting.FactoryExportProvider"/> class.
-            </summary>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.#ctor(System.Type,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
-            <summary>
-            Initializes a new instance of the <see cref="T:MefContrib.Hosting.FactoryExportProvider"/> class.
-            </summary>
-            <param name="type"><see cref="T:System.Type"/> to be registered.</param>
-            <param name="factory">Factory method.</param>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.#ctor(System.Type,System.String,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
-            <summary>
-            Initializes a new instance of <see cref="T:MefContrib.Hosting.FactoryExportProvider"/> class.
-            </summary>
-            <param name="type"><see cref="T:System.Type"/> to be registered.</param>
-            <param name="registrationName">Registration name.</param>
-            <param name="factory">Factory method.</param>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.#ctor(System.Func{System.Type,System.String,System.Object})">
-            <summary>
-            Initializes a new instance of <see cref="T:MefContrib.Hosting.FactoryExportProvider"/> class.
-            </summary>
-            <param name="factoryMethod">Method that is called when an instance of specific type
-            is requested, optionally with given registration name.</param>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.Register(System.Type,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
-            <summary>
-            Registers a new type.
-            </summary>
-            <param name="type">Type that is being exported.</param>
-            <param name="factory">Optional factory method. If not supplied, the general
-            factory method will be used.</param>
-            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.Register``1(System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,``0})">
-            <summary>
-            Registers a new type.
-            </summary>
-            <typeparam name="T">Type that is being exported.</typeparam>
-            <param name="factory">Optional factory method. If not supplied, the general
-            factory method will be used.</param>
-            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.RegisterInstance(System.Type,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
-            <summary>
-            Registers a new type as a singleton.
-            </summary>
-            <param name="type">Type that is being exported.</param>
-            <param name="factory">Factory method.</param>
-            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.RegisterInstance``1(System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,``0})">
-            <summary>
-            Registers a new type as a singleton.
-            </summary>
-            <typeparam name="T">Type that is being exported.</typeparam>
-            <param name="factory">Optional factory method. If not supplied, the general
-            factory method will be used.</param>
-            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.RegisterInstance(System.Type,System.String,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
-            <summary>
-            Registers a new type as a singleton.
-            </summary>
-            <param name="type">Type that is being registered.</param>
-            <param name="registrationName">Registration name under which <paramref name="type"/>
-            is being registered.</param>
-            <param name="factory">Optional factory method. If not supplied, the general
-            factory method will be used.</param>
-            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.RegisterInstance``1(System.String,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,``0})">
-            <summary>
-            Registers a new type as a singleton.
-            </summary>
-            <typeparam name="T">Type that is being exported.</typeparam>
-            <param name="registrationName">Registration name under which <typeparamref name="T"/>
-            is being registered.</param>
-            <param name="factory">Optional factory method. If not supplied, the general
-            factory method will be used.</param>
-            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.Register``1(System.String,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,``0})">
-            <summary>
-            Registers a new type.
-            </summary>
-            <typeparam name="T">Type that is being exported.</typeparam>
-            <param name="registrationName">Registration name under which <typeparamref name="T"/>
-            is being registered.</param>
-            <param name="factory">Optional factory method. If not supplied, the general
-            factory method will be used.</param>
-            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
-        </member>
-        <member name="M:MefContrib.Hosting.FactoryExportProvider.Register(System.Type,System.String,System.Func{System.ComponentModel.Composition.Hosting.ExportProvider,System.Object})">
-            <summary>
-            Registers a new type.
-            </summary>
-            <param name="type">Type that is being registered.</param>
-            <param name="registrationName">Registration name under which <paramref name="type"/>
-            is being registered.</param>
-            <param name="factory">Optional factory method. If not supplied, the general
-            factory method will be used.</param>
-            <returns><see cref="T:MefContrib.Hosting.FactoryExportProvider"/> instance for fluent registration.</returns>
-        </member>
-        <member name="P:MefContrib.Hosting.FactoryExportProvider.ReadOnlyDefinitions">
-            <summary>
-            Gets a read only list of definitions known to the export provider.
-            </summary>
-        </member>
-        <member name="P:MefContrib.Hosting.FactoryExportProvider.SourceProvider">
-            <summary>
-            Gets or sets the <see cref="T:System.ComponentModel.Composition.Hosting.ExportProvider"/> which is used to satisfy additional exports.
-            </summary>
         </member>
         <member name="T:MefContrib.Hosting.FactoryExportDefinition">
             <summary>
@@ -2388,103 +2665,108 @@
             </summary>
             <value>An <see cref="T:System.Collections.Generic.IList`1"/> instance, containing <see cref="P:MefContrib.Hosting.Conventions.ExportConvention.Metadata"/> objects.</value>
         </member>
-        <member name="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1">
+        <member name="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`2">
             <summary>
-            A convention builder for <see cref="T:MefContrib.Hosting.Conventions.IExportConvention"/> instances.
+            A convention builder for <see cref="T:MefContrib.Hosting.Conventions.IPartConvention"/> instances.
             </summary>
-            <typeparam name="TExportConvention">The type of the export convention that will be built by the expression builder.</typeparam>
+            <typeparam name="TPart">The type of the part this convention is applied to.</typeparam>
+            <typeparam name="TConvention">The type of the part convention that will be built by the expression builder.</typeparam>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.#ctor">
+        <member name="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1">
             <summary>
-            Initializes a new instance of the <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> class.
+            A convention builder for <see cref="T:MefContrib.Hosting.Conventions.IPartConvention"/> instances.
+            </summary>
+            <typeparam name="TConvention">The type of the part convention that will be built by the expression builder.</typeparam>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> class.
             </summary>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.AddMetadata(System.Object)">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.AddMetadata(System.Object)">
             <summary>
-            Defines metadata, using property name and values extracted from an anonymous type, that will be added to the exports created by the convention.
+            Defines metadata, using property name and values extracted from an anonymous type, that will be added to the parts created by the convention.
             </summary>
             <param name="anonymousType">The anonymous type that the names and values will be extracted from.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
             <exception cref="T:System.ArgumentNullException">The method was called with a null value.</exception>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.AddMetadata(System.String,System.Object)">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.AddMetadata(System.String,System.Object)">
             <summary>
-            Defines metadata, using a name and value pair, that will be added to the exports created by the convention.
+            Defines metadata, using a name and value pair, that will be added to the parts created by the convention.
             </summary>
             <param name="name">The name of the metadata.</param>
             <param name="value">The value of the metadata.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
             <exception cref="T:System.ArgumentNullException">The value of the <paramref name="name"/> or <paramref name="value"/> parameters were null.</exception>
             <exception cref="T:System.ArgumentOutOfRangeException">The lenght of the <paramref name="name"/> was zero.</exception>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.AddMetadata(System.Func{System.Collections.Generic.KeyValuePair{System.String,System.Object}[]})">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.AddMetadata(System.Func{System.Collections.Generic.KeyValuePair{System.String,System.Object}[]})">
             <summary>
-            Defines metadata, using <see cref="T:System.Collections.Generic.KeyValuePair`2"/> instances retrieved from a function, that will be added to the exports created by the convention.
+            Defines metadata, using <see cref="T:System.Collections.Generic.KeyValuePair`2"/> instances retrieved from a function, that will be added to the parts created by the convention.
             </summary>
             <param name="metadataFunction">The function that the metadata can be retrieved from.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
             <exception cref="T:System.ArgumentNullException">The <paramref name="metadataFunction"/>, or the value returned by it, was null.</exception>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.ContractName(System.String)">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.Exports(System.Action{MefContrib.Hosting.Conventions.Configuration.IExportRegistry})">
             <summary>
-            Defines the contract name that will be added to the exports created by the convention.
+            Defines the export conventions which should be assigned to the part convention.
             </summary>
-            <param name="contractName">A <see cref="T:System.String"/> containing the name of the contract which should be used by the created exports.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <param name="action">A closure for an <see cref="T:MefContrib.Hosting.Conventions.Configuration.IExportRegistry"/> instance.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="action"/> parameter was null.</exception>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.ContractName``1">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.ForTypesMatching(System.Predicate{System.Type})">
             <summary>
-            Defines the contract name that will be added to the exports created by the convention, by deriving it from the provided type.
+            Defines the condition that a type has to pass in order for the convention to be applied to it.
             </summary>
-            <typeparam name="TContractType">A <see cref="T:System.Type"/> that should be used as the contract name of the created exports.</typeparam>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <param name="condition">A function that evaluates if the convention can be applied to the specified type.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
+            <exception cref="T:System.ArgumentNullException">The the <paramref name="condition"/> parameter was null.</exception>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.ContractName(System.Func{System.Reflection.MemberInfo,System.String})">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.Imports(System.Action{MefContrib.Hosting.Conventions.Configuration.IImportRegistry})">
             <summary>
-            Defined the contract name that will be added to the exports created by the convention, by invoking the function.
+            Defines the import conventions which should be assigned to the part convention.
             </summary>
-            <param name="contractNameFunction">A function that accepts a <see cref="T:System.Reflection.MemberInfo"/> instance for the member that is being exported and returns the contract name.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <param name="action">A closure for an <see cref="T:MefContrib.Hosting.Conventions.Configuration.IImportRegistry"/> instance.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="action"/> parameter was null.</exception>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.ContractType``1">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.MakeNonShared">
             <summary>
-            Defines the contract type that will be added to the exports created by the convention.
+            Defines that all parts created using the convention should be unique instances.
             </summary>
-            <typeparam name="TContractType">A <see cref="T:System.Type"/> that should be used as the contract type of the created exports.</typeparam>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.ContractType(System.Func{System.Reflection.MemberInfo,System.Type})">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.MakeShared">
             <summary>
-            Defined the contract type that will be added to the exports created by the convention, by invoking the function.
+            Defines that all parts created using the convention should use a shared instance.
             </summary>
-            <param name="contractTypeFunction">A function that accepts a <see cref="T:System.Reflection.MemberInfo"/> instance for the member that is being exported and returns the contract type.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.Members(System.Func{System.Type,System.Reflection.MemberInfo[]})">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`2.Exports(System.Action{MefContrib.Hosting.Conventions.Configuration.IExportRegistry})">
             <summary>
-            Defines the members which should be used as exports by retreiving them from a function.
+            Defines the export conventions which should be assigned to the part convention.
             </summary>
-            <param name="expression">A <see cref="T:System.Func`2"/> function that returns a collection of <see cref="T:System.Reflection.MemberInfo"/> instances based on the provided <see cref="T:System.Type"/>.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
-            <exception cref="T:System.ArgumentNullException">The value of the <paramref name="expression"/> parameter was null.</exception>
+            <param name="action">A closure for an <see cref="T:MefContrib.Hosting.Conventions.Configuration.IExportRegistry"/> instance.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="action"/> parameter was null.</exception>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.Members``1(System.Linq.Expressions.Expression{System.Action{``0}})">
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`2.Imports(System.Action{MefContrib.Hosting.Conventions.Configuration.IImportRegistry})">
             <summary>
-            Defines the members which sould be used as exports by extracting them from a lambda expression with no return value.
+            Defines the import conventions which should be assigned to the part convention.
             </summary>
-            <typeparam name="TPart">The <see cref="T:System.Type"/> that the members should be extracted from.</typeparam>
-            <param name="expression">An expression that idenfies the members which should be used as exports.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
-            <exception cref="T:System.ArgumentNullException">The value of the <paramref name="expression"/> parameter was null.</exception>
+            <param name="action">A closure for an <see cref="T:MefContrib.Hosting.Conventions.Configuration.IImportRegistry"/> instance.</param>
+            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="action"/> parameter was null.</exception>
         </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1.Members``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+        <member name="T:MefContrib.Hosting.Conventions.Configuration.ImportConventionBuilder`2">
             <summary>
-            Defines the members which sould be used as exports by extracting them from a lambda expression with a return value.
+            A convention builder for <see cref="T:MefContrib.Hosting.Conventions.IImportConvention"/> instances.
             </summary>
-            <typeparam name="TPart">The <see cref="T:System.Type"/> that the members should be extracted from.</typeparam>
-            <param name="expression">An expression that idenfies the members which should be used as exports.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance as the method was called on.</returns>
-            <exception cref="T:System.ArgumentNullException">The value of the <paramref name="expression"/> parameter was null.</exception>
+            <typeparam name="TImportConvention">The type of the import convention that will be built by the expression builder.</typeparam>
+            <typeparam name="TPart">The type of the part used to get imports for.</typeparam>
         </member>
         <member name="T:MefContrib.Hosting.Conventions.AssemblyTypeScanner">
             <summary>
@@ -2637,79 +2919,6 @@
             </summary>
             <value>The <see cref="T:System.Type"/> that the convention applies to.</value>
         </member>
-        <member name="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1">
-            <summary>
-            A convention builder for <see cref="T:MefContrib.Hosting.Conventions.IPartConvention"/> instances.
-            </summary>
-            <typeparam name="TConvention">The type of the part convention that will be built by the expression builder.</typeparam>
-        </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> class.
-            </summary>
-        </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.AddMetadata(System.Object)">
-            <summary>
-            Defines metadata, using property name and values extracted from an anonymous type, that will be added to the parts created by the convention.
-            </summary>
-            <param name="anonymousType">The anonymous type that the names and values will be extracted from.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
-            <exception cref="T:System.ArgumentNullException">The method was called with a null value.</exception>
-        </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.AddMetadata(System.String,System.Object)">
-            <summary>
-            Defines metadata, using a name and value pair, that will be added to the parts created by the convention.
-            </summary>
-            <param name="name">The name of the metadata.</param>
-            <param name="value">The value of the metadata.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
-            <exception cref="T:System.ArgumentNullException">The value of the <paramref name="name"/> or <paramref name="value"/> parameters were null.</exception>
-            <exception cref="T:System.ArgumentOutOfRangeException">The lenght of the <paramref name="name"/> was zero.</exception>
-        </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.AddMetadata(System.Func{System.Collections.Generic.KeyValuePair{System.String,System.Object}[]})">
-            <summary>
-            Defines metadata, using <see cref="T:System.Collections.Generic.KeyValuePair`2"/> instances retrieved from a function, that will be added to the parts created by the convention.
-            </summary>
-            <param name="metadataFunction">The function that the metadata can be retrieved from.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
-            <exception cref="T:System.ArgumentNullException">The <paramref name="metadataFunction"/>, or the value returned by it, was null.</exception>
-        </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.Exports(System.Action{MefContrib.Hosting.Conventions.Configuration.IExportRegistry})">
-            <summary>
-            Defines the export conventions which should be assigned to the part convention.
-            </summary>
-            <param name="action">A closure for an <see cref="T:MefContrib.Hosting.Conventions.Configuration.IExportRegistry"/> instance.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
-            <exception cref="T:System.ArgumentNullException">The <paramref name="action"/> parameter was null.</exception>
-        </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.ForTypesMatching(System.Predicate{System.Type})">
-            <summary>
-            Defines the condition that a type has to pass in order for the convention to be applied to it.
-            </summary>
-            <param name="condition">A function that evaluates if the convention can be applied to the specified type.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
-            <exception cref="T:System.ArgumentNullException">The the <paramref name="condition"/> parameter was null.</exception>
-        </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.Imports(System.Action{MefContrib.Hosting.Conventions.Configuration.IImportRegistry})">
-            <summary>
-            Defines the import conventions which should be assigned to the part convention.
-            </summary>
-            <param name="action">A closure for an <see cref="T:MefContrib.Hosting.Conventions.Configuration.IImportRegistry"/> instance.</param>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
-            <exception cref="T:System.ArgumentNullException">The <paramref name="action"/> parameter was null.</exception>
-        </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.MakeNonShared">
-            <summary>
-            Defines that all parts created using the convention should be unique instances.
-            </summary>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
-        </member>
-        <member name="M:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1.MakeShared">
-            <summary>
-            Defines that all parts created using the convention should use a shared instance.
-            </summary>
-            <returns>Returns a reference to the same <see cref="T:MefContrib.Hosting.Conventions.Configuration.PartConventionBuilder`1"/> instance as the method was called on.</returns>
-        </member>
         <member name="T:MefContrib.ContractServices">
             <summary>
             Contains the methods used to retrive contract name and type identity for imports and exports.
@@ -2772,6 +2981,40 @@
             <param name="definition">The <see cref="T:System.ComponentModel.Composition.Primitives.ImportDefinition"/> instance.</param>
             <returns><c>True</c> if the given import definition is based on the
             reflection model. <c>False</c> otherwise.</returns>
+        </member>
+        <member name="T:MefContrib.Containers.ContainerAdapterBase">
+            <summary>
+            Represents an abstract base class which all <see cref="T:MefContrib.Containers.IContainerAdapter"/>
+            implementators can inherit from.
+            </summary>
+        </member>
+        <member name="M:MefContrib.Containers.ContainerAdapterBase.Resolve(System.Type,System.String)">
+            <summary>
+            Method called by <see cref="T:MefContrib.Containers.ContainerExportProvider"/> to retrieve
+            an instance of a given type.
+            </summary>
+            <param name="type">Type of the instance to retrieve.</param>
+            <param name="name">Optional name.</param>
+            <returns>An instance of a given type.</returns>
+        </member>
+        <member name="M:MefContrib.Containers.ContainerAdapterBase.Initialize">
+            <summary>
+            Method called by <see cref="T:MefContrib.Containers.ContainerExportProvider"/> in order
+            to initialize the adapter.
+            </summary>
+        </member>
+        <member name="M:MefContrib.Containers.ContainerAdapterBase.OnRegisteringComponent(System.Type,System.String)">
+            <summary>
+            Fires <see cref="E:MefContrib.Containers.ContainerAdapterBase.RegisteringComponent"/> event.
+            </summary>
+            <param name="type">Type being registered.</param>
+            <param name="name">Optional name.</param>
+        </member>
+        <member name="E:MefContrib.Containers.ContainerAdapterBase.RegisteringComponent">
+            <summary>
+            Event raised whenever a component gets registered in
+            the underlying container.
+            </summary>
         </member>
         <member name="T:MefContrib.Hosting.Interception.Configuration.InterceptionConfiguration">
             <summary>
@@ -2907,146 +3150,16 @@
         </member>
         <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportRegistry.Export``1">
             <summary>
+            Creates a convention builder for <see cref="T:MefContrib.Hosting.Conventions.ExportConvention"/> conventions.
+            </summary>
+            <returns>A <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance for the <see cref="T:MefContrib.Hosting.Conventions.ExportConvention"/> type.</returns>
+        </member>
+        <member name="M:MefContrib.Hosting.Conventions.Configuration.ExportRegistry.ExportWithConvention``1">
+            <summary>
             Create a convention builder for the <typeparamref name="TConvention"/> convention type.
             </summary>
             <typeparam name="TConvention">The type of a class which implements the <see cref="T:MefContrib.Hosting.Conventions.IExportConvention"/> interface.</typeparam>
             <returns>A <see cref="T:MefContrib.Hosting.Conventions.Configuration.ExportConventionBuilder`1"/> instance for the export convention type specified by the <typeparamref name="TConvention"/> type parameter.</returns>
-        </member>
-        <member name="T:MefContrib.Containers.ContainerExportProvider">
-            <summary>
-            Represents an <see cref="T:System.ComponentModel.Composition.Hosting.ExportProvider"/> which can provide
-            MEF with parts registered in any container.
-            </summary>
-        </member>
-        <member name="M:MefContrib.Containers.ContainerExportProvider.#ctor(MefContrib.Containers.IContainerAdapter)">
-            <summary>
-            Initializes a new instance of <see cref="T:MefContrib.Containers.ContainerExportProvider"/> class.
-            </summary>
-            <param name="containerAdapter">An instance of the <see cref="T:MefContrib.Containers.IContainerAdapter"/> interface.</param>
-        </member>
-        <member name="P:MefContrib.Containers.ContainerExportProvider.FactoryExportProvider">
-            <summary>
-            Gets the underlying <see cref="P:MefContrib.Containers.ContainerExportProvider.FactoryExportProvider"/> instance.
-            </summary>
-        </member>
-        <member name="T:MefContrib.Containers.IContainerAdapter">
-            <summary>
-            Represents an abstraction over a dependency injection container.
-            </summary>
-        </member>
-        <member name="M:MefContrib.Containers.IContainerAdapter.Resolve(System.Type,System.String)">
-            <summary>
-            Method called by <see cref="T:MefContrib.Containers.ContainerExportProvider"/> to retrieve
-            an instance of a given type.
-            </summary>
-            <param name="type">Type of the instance to retrieve.</param>
-            <param name="name">Optional name.</param>
-            <returns>An instance of a given type.</returns>
-        </member>
-        <member name="M:MefContrib.Containers.IContainerAdapter.Initialize">
-            <summary>
-            Method called by <see cref="T:MefContrib.Containers.ContainerExportProvider"/> in order
-            to initialize the adapter.
-            </summary>
-        </member>
-        <member name="E:MefContrib.Containers.IContainerAdapter.RegisteringComponent">
-            <summary>
-            Event raised whenever a component gets registered in
-            the underlying container.
-            </summary>
-        </member>
-        <member name="T:MefContrib.Containers.ContainerServices">
-            <summary>
-            Provides common services.
-            </summary>
-        </member>
-        <member name="M:MefContrib.Containers.ContainerServices.Resolve(System.ComponentModel.Composition.Hosting.ExportProvider,System.Type,System.String)">
-            <summary>
-            Resolves an object wrapped inside <see cref="T:System.Lazy`1"/> from an <see cref="T:System.ComponentModel.Composition.Hosting.ExportProvider"/>.
-            </summary>
-            <param name="exportProvider">Export provider.</param>
-            <param name="type">Type to be resolved.</param>
-            <param name="name">Optional name.</param>
-            <returns>Resolved instance or null, if no instance has been found.</returns>
-            <remarks>
-            Does not resolve instances which are provided by means of
-            <see cref="T:MefContrib.Hosting.FactoryExportProvider"/>.
-            </remarks>
-        </member>
-        <member name="M:MefContrib.Containers.ContainerServices.ResolveAll(System.ComponentModel.Composition.Hosting.ExportProvider,System.Type,System.String)">
-            <summary>
-            Resolves an collection of objects wrapped inside <see cref="T:System.Lazy`1"/>
-            from an <see cref="T:System.ComponentModel.Composition.Hosting.ExportProvider"/>.
-            </summary>
-            <param name="exportProvider">Export provider.</param>
-            <param name="type">Type to be resolved.</param>
-            <param name="name">Optional name.</param>
-            <returns>Resolved collection of lazy instances or null, if no instance has been found.</returns>
-            <remarks>
-            Does not resolve instances which are provided by means of
-            <see cref="T:MefContrib.Hosting.FactoryExportProvider"/>.
-            </remarks>
-        </member>
-        <member name="T:MefContrib.Containers.RegisterComponentEventArgs">
-            <summary>
-            Represents arguments for <see cref="E:MefContrib.Containers.IContainerAdapter.RegisteringComponent"/> event.
-            </summary>
-        </member>
-        <member name="M:MefContrib.Containers.RegisterComponentEventArgs.#ctor(System.Type,System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:MefContrib.Containers.RegisterComponentEventArgs"/> class.
-            </summary>
-            <param name="type"><see cref="P:MefContrib.Containers.RegisterComponentEventArgs.Type"/> being registered.</param>
-            <param name="name">Optional name.</param>
-        </member>
-        <member name="P:MefContrib.Containers.RegisterComponentEventArgs.Type">
-            <summary>
-            Gets the <see cref="P:MefContrib.Containers.RegisterComponentEventArgs.Type"/> being registered.
-            </summary>
-        </member>
-        <member name="P:MefContrib.Containers.RegisterComponentEventArgs.Name">
-            <summary>
-            Gets the optional name used during component registration.
-            </summary>
-        </member>
-        <member name="T:MefContrib.Containers.PartNotComposableAttribute">
-            <summary>
-            Suppresses MEF composition for a class created by the IoC container.
-            </summary>
-        </member>
-        <member name="T:MefContrib.Containers.ContainerAdapterBase">
-            <summary>
-            Represents an abstract base class which all <see cref="T:MefContrib.Containers.IContainerAdapter"/>
-            implementators can inherit from.
-            </summary>
-        </member>
-        <member name="M:MefContrib.Containers.ContainerAdapterBase.Resolve(System.Type,System.String)">
-            <summary>
-            Method called by <see cref="T:MefContrib.Containers.ContainerExportProvider"/> to retrieve
-            an instance of a given type.
-            </summary>
-            <param name="type">Type of the instance to retrieve.</param>
-            <param name="name">Optional name.</param>
-            <returns>An instance of a given type.</returns>
-        </member>
-        <member name="M:MefContrib.Containers.ContainerAdapterBase.Initialize">
-            <summary>
-            Method called by <see cref="T:MefContrib.Containers.ContainerExportProvider"/> in order
-            to initialize the adapter.
-            </summary>
-        </member>
-        <member name="M:MefContrib.Containers.ContainerAdapterBase.OnRegisteringComponent(System.Type,System.String)">
-            <summary>
-            Fires <see cref="E:MefContrib.Containers.ContainerAdapterBase.RegisteringComponent"/> event.
-            </summary>
-            <param name="type">Type being registered.</param>
-            <param name="name">Optional name.</param>
-        </member>
-        <member name="E:MefContrib.Containers.ContainerAdapterBase.RegisteringComponent">
-            <summary>
-            Event raised whenever a component gets registered in
-            the underlying container.
-            </summary>
         </member>
     </members>
 </doc>
